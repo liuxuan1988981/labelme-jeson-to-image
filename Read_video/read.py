@@ -34,13 +34,13 @@ def video2images(Video_Dir):
         #     loop_flag = pos
         #     cap.set(cv2.CAP_PROP_POS_FRAMES, pos)
         #     # print('loop_flag2', loop_flag)
-        c = c + 150
+        c = c + 100
         # if c % 3000==0:
         cap.set(cv2.CAP_PROP_POS_FRAMES, c)
         ret, image = cap.read()
         # lang ,wight
-        image=image[250:750,500:1500,:]
-        cv2.imwrite('data1/' + str(index) + '.jpg', image) 
+        image=image[200:700,500:1500,:]
+        cv2.imwrite('9251/' + str(index) + '.jpg', image) 
         # cv2.imshow(name,image)
         index += 1
         cv2.waitKey(1)
@@ -57,6 +57,6 @@ def video2images(Video_Dir):
  
 
 if __name__ == "__main__":
-    Video_Dir = "3.mp4"
+    Video_Dir = "9251.mp4"
     video2images(Video_Dir)
 
