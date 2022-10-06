@@ -13,6 +13,12 @@ class click():
         self.dict_dtc_date = {}
         self.flag_can = 3
         pass
+    
+    def auto_Click(self,var_avg):
+        pyautogui.click(var_avg[0], var_avg[1], button='left')
+        pyautogui.mouseDown(button='left')
+        pyautogui.mouseUp(button='left')
+
 
     def get_xy(self,img_model_path,img):
         img_terminal = cv2.imread(img_model_path)
@@ -52,7 +58,7 @@ class click():
           print(f"Not have---{name}")
         else:
             print(f"clicking---{name}")
-            self.click_lift(avg)
+            self.auto_Click(avg)
 
 
     def main_gui(self):
