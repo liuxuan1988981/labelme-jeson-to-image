@@ -85,6 +85,20 @@ class click():
             print(f"clicking---{name}")
             self.auto_Click(avg)
 
+    def routine_direx(self,img_model_path,name,img):
+        avg = self.get_xy(img_model_path,img)
+        if avg == 0:
+          print(f"Not have---{name}")
+        else:
+            print(f"clicking---{name}")
+            
+            direct.moveTo(avg[0], avg[1]+10)
+            time.sleep(0.5)
+            pyautogui.mouseDown(button='left')
+            time.sleep(0.5)
+            pyautogui.mouseUp(button='left')
+            # time.sleep(0.5)
+
 # 'War Thunder' 'War Thunder Client'DagorWClass
     def main_gui(self):
         index=0
@@ -108,71 +122,66 @@ class click():
                     # k.release('enter')
                     time.sleep(5)
             if state ==  '- Loading':
+                index = 0
                 time.sleep(3)
+
             # ingame=self.check_status("./war/ingame.png","ingame",img)
             if state == ' - in battle':
                 time.sleep(1)
                 if index == 0:
                     select=self.check_status("./war/select.png","select",img)
-                    if select == True:
-                        
+                    if select == True:  
                         k.press('enter')
                         time.sleep(1)
                         k.release('enter') 
-                        index = 1
-                        time.sleep(13)
-                        # k.press('enter')
-                        # time.sleep(0.5)
-                        # k.release('enter')                    
-                
-                ingame=self.check_status("./war/ingame.png","ingame",img)
-
-                if ingame == True:
-                    time.sleep(0.5)
-                    k.press('l')
-                    time.sleep(1)
-                    k.release('l')
-                    time.sleep(1)
-                    if index == 2:
-                        print(" second  index == 2")
-                        time.sleep(0.5)
-                        direct.press('l')
-                        time.sleep(0.5)
-                        k.press('w')
-                        time.sleep(5)
-                        k.release('w')
-                        time.sleep(1)
-                        k.press('b')
-                        time.sleep(0.5)
-                        k.release('b')
-                        time.sleep(0.5)
-                        k.press('l')
-                        time.sleep(1)
-                        k.release('l') 
-                        # time.sleep(0.5)
-                        # k.press('s')
-                        # time.sleep(3)
-                        # k.release('s')   
-                    else:  
-                        print("=== first in ingame")
-                        time.sleep(0.5)
-                        k.press('a')
-                        time.sleep(0.5)
-                        k.press('b')
-                        time.sleep(0.5)
-                        k.release('b')
-                        time.sleep(0.5)
-                        k.press('l')
-                        time.sleep(0.5)
-                        k.release('l')
-                        time.sleep(0.5)
-                        time.sleep(10)
-                        k.release('a')
                         index = 2
+                        time.sleep(13)
+                        k.press('s')
+                        time.sleep(0.8)
+                        k.release('s')                    
+                
+                return_hanger=self.check_status("./war/return_to_hanger.png","return_to_hanger",img)
+                if return_hanger == True:
+                    self.routine_direx("./war/return_to_hanger.png", "return_to_hanger",img)
+                print(index)
+                # ingame=self.check_status("./war/air_in_game.png","ingame",img)
+
+                # if ingame == True:
+                #     time.sleep(0.5)
+                #     k.press('shift')
+                #     time.sleep(3)
+                #     k.release('shift')
+                #     time.sleep(1)
+                #     index = 2
+
+                    # if index == 2:
+                    #     print(" second  index == 2")
+                    #     time.sleep(0.5)
+                    #     direct.press('l')
+                    #     time.sleep(0.5)
+                    #     k.press('s')
+                    #     time.sleep(3)
+                    #     k.release('s')   
+                    # else:  
+                    #     print("=== first in ingame")
+                    #     time.sleep(0.5)
+                    #     k.press('a')
+                    #     k.press('shift')
+                    #     time.sleep(0.5)
+                    #     k.release('a')
+                    #     k.release('shift')
+                    #     time.sleep(0.5)
+                    #     time.sleep(10)
+                    #     index = 2
+                    
                     
 
             if state ==''and index ==2:
-                complish=self.check_status("./war/state_quit_from_game.png","complish",img)
+
+                direct.moveTo(x1+100, y1+100)
+                time.sleep(1)
+
+                complish=self.check_status("./war/quite_game.png","complish",img)
                 if complish == True:     
                     k.press('enter')
                     time.sleep(1)
